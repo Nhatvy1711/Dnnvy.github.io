@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+<title>Register Form Validation</title>
+<script>
+function validateForm() {
+  let fullName = document.forms["regForm"]["fullname"].value;
+  let email = document.forms["regForm"]["email"].value;
+  let username = document.forms["regForm"]["username"].value;
+  let password = document.forms["regForm"]["password"].value;
+  let repassword = document.forms["regForm"]["repassword"].value;
+
+  // Check if any field is empty
+  if (fullName == "" || email == "" || username == "" || password == "" || repassword == "") {
+    alert("All fields must be filled out!");
+    return false;
+  }
+
+  // Check valid email format
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    alert("You have entered an invalid email address!");
+    return false;
+  }
+
+  // Check if passwords match
+  if (password != repassword) {
+    alert("Passwords do not match!");
+    return false;
+  }
+
+  // If all checks pass
+  alert("Registration successful!");
+  return true;
+}
+</script>
+</head>
+<body>
+
+<h2>Register to become a member of the website</h2>
+<form name="regForm" onsubmit="return validateForm()">
+  <label>Full name</label><br>
+  <input type="text" name="fullname"><br><br>
+
+  <label>Email</label><br>
+  <input type="text" name="email"><br><br>
+
+  <label>Username</label><br>
+  <input type="text" name="username"><br><br>
+
+  <label>Choose a password</label><br>
+  <input type="password" name="password"><br><br>
+
+  <label>Re-enter password</label><br>
+  <input type="password" name="repassword"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
